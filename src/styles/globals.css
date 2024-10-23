@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Typeform-inspired colors with high contrast */
+    --background: 0 0% 4%;
+    --foreground: 0 0% 100%;
+    
+    --card: 0 0% 7%;
+    --card-foreground: 0 0% 100%;
+    
+    --popover: 0 0% 7%;
+    --popover-foreground: 0 0% 100%;
+    
+    --primary: 0 0% 100%;
+    --primary-foreground: 0 0% 4%;
+    
+    --secondary: 0 0% 13%;
+    --secondary-foreground: 0 0% 100%;
+    
+    --muted: 0 0% 40%;
+    --muted-foreground: 0 0% 63%;
+    
+    --accent: 0 0% 13%;
+    --accent-foreground: 0 0% 100%;
+    
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    
+    --border: 0 0% 20%;
+    --input: 0 0% 13%;
+    --ring: 0 0% 100%;
+
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', sans-serif;
+  }
+
+  /* Form inputs */
+  input[type="text"],
+  input[type="email"],
+  input[type="number"],
+  textarea,
+  select {
+    @apply w-full px-4 py-3 bg-secondary border-transparent rounded-lg;
+    @apply text-foreground placeholder:text-muted;
+    @apply focus:ring-2 focus:ring-white focus:border-transparent;
+    @apply transition-colors duration-200;
+  }
+
+  /* Range input */
+  input[type="range"] {
+    @apply w-full h-2 bg-secondary rounded-full appearance-none cursor-pointer;
+  }
+
+  input[type="range"]::-webkit-slider-thumb {
+    @apply w-4 h-4 bg-white rounded-full border-none appearance-none;
+    @apply hover:bg-neutral-200 transition-colors duration-200;
+  }
+
+  /* Checkbox */
+  input[type="checkbox"] {
+    @apply w-5 h-5 bg-secondary border-muted rounded;
+    @apply checked:bg-white checked:border-white;
+    @apply focus:ring-2 focus:ring-white focus:ring-offset-0;
+  }
+
+  /* Typography */
+  h1, h2, h3, h4, h5, h6 {
+    @apply text-foreground font-medium tracking-tight;
+  }
+
+  p {
+    @apply text-muted-foreground;
+  }
+}
+
+/* Custom animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
